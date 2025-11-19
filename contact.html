@@ -1,0 +1,66 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts Example -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body class="grid-background">
+    <!-- Site Header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="project.html">Projects</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Contact Card Section -->
+        <section class="contact-card">
+            <h2>Let's Connect</h2>
+            <p>Interested in collaborating? Reach out using the form below or connect with me directly via social links.</p>
+            <!-- Contact Form -->
+            <form action="#" method="post" autocomplete="on">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" aria-label="Your Name" autocomplete="name" required>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" aria-label="Your Email" autocomplete="email" required>
+                <br>
+                <label for="message">Message:</label>
+                <textarea name="message" id="message" rows="5" aria-label="Your Message"></textarea>
+                <br>
+                <label>
+                    <input type="checkbox" name="newsletter" id="newsletter">
+                    Sign up for email updates
+                </label>
+                <br>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+
+        <!-- Social Links Sidebar -->
+        <aside class="social-bar">
+            <a class="social-link" href="https://github.com/ItsCreamy" target="_blank" aria-label="GitHub"><img src="pictures/github.svg" alt="GitHub"></a>
+            <a class="social-link" href="https://www.linkedin.com/in/chanul-udugampola-a84421314/" target="_blank" aria-label="LinkedIn"><img src="pictures/linkedin.svg" alt="LinkedIn"></a>
+            <a class="social-link" href="https://www.instagram.com/krymi.xo/" target="_blank" aria-label="Instagram"><img src="pictures/instagram.svg" alt="Instagram"></a>
+        </aside>
+    </main>
+    <!-- Site Footer -->
+    <footer class="footer-box">
+        <div class="footer-message">
+            Crafted by Chanul Udugampola
+        </div>
+        <div class="footer-copy">© 2025 | All rights reserved.</div>
+    </footer>
+</body>
+</html>

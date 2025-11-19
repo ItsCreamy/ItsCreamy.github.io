@@ -1,0 +1,120 @@
+<!-- project.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts Example -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body class="grid-background">
+    <!-- Site Header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="project.html" class="active">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- Main Content -->
+<main>
+  <!-- Portfolio Section -->
+  <section class="portfolio-section">
+    <!-- Portfolio Header -->
+    <div class="portfolio-header">
+      <h1>My Projects</h1>
+    </div>
+    <!-- Portfolio List/Grid -->
+    <div class="portfolio-list">
+      <!-- Project Card 1 -->
+      <article class="project-card">
+        <!-- Project Image -->
+        <img src="pictures/shoptidy.png" alt="Shoptidy project screenshot" class="project-image">
+        <!-- Project Information -->
+        <div class="project-info">
+          <h2 class="project-title">Shopimy</h2>
+          <!-- Project Description -->
+          <p class="project-description">A modern website with all ecommerce functionalities. It includes features like product browsing, 
+            shopping cart, user authentication, ordering a product.
+            The application is developed with react & Javascript for frontend part.</p>
+          <!-- Technology Tags -->
+          <div class="project-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">React</span>
+            <span class="tag">Figma</span>
+          </div>
+        </div>
+      </article>
+      <!-- Project Card 2 -->
+      <article class="project-card">
+        <!-- Project Image -->
+        <img src="pictures/expensetracker.png" alt="ExpenseTracker project screenshot" class="project-image">
+        <!-- Project Information -->
+        <div class="project-info">
+          <h2 class="project-title">ExpenseTracker</h2>
+          <!-- Project Description -->
+          <p class="project-description">An expense tracking web application that helps users monitor and manage their daily expenses. 
+            It features user authentication, expense categorization, and data visualization through charts. 
+            Built using the MERN stack (MongoDB, Express.js, React, Node.js).</p>
+          <!-- Technology Tags -->
+          <div class="project-tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">React</span>
+            <span class="tag">NodeJS</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">ExpressJS</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+  <!-- Blog Section -->
+  <section class="blog-section">
+    <h1>Blog</h1>
+    <!-- Blog List/Grid -->
+    <div class="blog-list">
+      <!-- Blog Post 1 -->
+      <article class="blog-card">
+        <h3 class="blog-title">Exploring Advanced CSS (Selectors, Specificity, and Animations)</h3>
+        <time datetime="2025-10-31" class="blog-date">Oct 31, 2025</time>
+        <p class="blog-summary">
+          I learned how advanced CSS can make websites more dynamic and precise. I explored different types of selectors — attribute, 
+          structural, pseudo-class, and pseudo-element — that allow me to target elements based on their attributes, state, or position in the document.
+           I also learned about specificity, which determines which rule takes priority when multiple styles apply to the same element. Then I moved on to the fun part:
+            transform, transition, and animation. These properties bring web pages to life — transforms change shape or position, transitions make changes smooth,
+             and animations create motion using keyframes. Together, they showed me how to add interactivity and visual appeal to any design using just CSS.
+        </p>
+      </article>
+      <!-- Blog Post 2 -->
+      <article class="blog-card">
+        <h3 class="blog-title">Building Responsive Layouts</h3>
+        <time datetime="2025-10-24" class="blog-date">Oct 24, 2025</time>
+        <p class="blog-summary">
+          I focused on Responsive Web Design and modern CSS layout systems that ensure adaptability to different screen sizes and devices. 
+          I learned how to use flexible layouts built with relative units like percentages and fr, responsive images that scale with the viewport, 
+          and media queries that apply specific styles based on screen width or orientation. I also explored Flexbox, which provides a one-dimensional layout model for 
+          efficiently aligning and distributing space among items along a single axis, and CSS Grid, a two-dimensional layout system that allows precise control over 
+          rows, columns, and defined grid areas.Combining both techniques makes it easier to create clean, structured, and fully responsive web designs.
+        </p>
+      </article>
+    </div>
+  </section>
+</main>
+
+    <!-- Site Footer -->
+    <footer class="footer-box">
+        <div class="footer-message">
+            Crafted by Chanul Udugampola
+        </div>
+        <div class="footer-copy">© 2025 | All rights reserved.</div>
+    </footer>
+</body>
+</html>
