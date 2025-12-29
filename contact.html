@@ -35,41 +35,32 @@
             <!-- Contact Form -->
             <form id="contact-form" action="#" method="post" autocomplete="on" novalidate>
                 <div class="form-group">
-                    <label for="name">Full Name <span class="required">*</span></label>
-                    <input type="text" name="name" id="name" aria-label="Your Name" autocomplete="name" required minlength="2" maxlength="100">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" aria-label="Your Name" autocomplete="name" required>
                     <span class="error-message" id="name-error"></span>
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">Email Address <span class="required">*</span></label>
+                    <label for="email">Email:</label>
                     <input type="email" name="email" id="email" aria-label="Your Email" autocomplete="email" required>
                     <span class="error-message" id="email-error"></span>
                 </div>
                 
                 <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" name="subject" id="subject" aria-label="Message Subject" autocomplete="off" maxlength="200">
-                    <span class="error-message" id="subject-error"></span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Message <span class="required">*</span></label>
-                    <textarea name="message" id="message" rows="6" aria-label="Your Message" required minlength="10" maxlength="1000"></textarea>
-                    <div class="char-counter">
-                        <span id="char-count">0</span> / 1000 characters
-                    </div>
+                    <label for="message">Message:</label>
+                    <textarea name="message" id="message" rows="5" aria-label="Your Message" required></textarea>
                     <span class="error-message" id="message-error"></span>
                 </div>
                 
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
                         <input type="checkbox" name="newsletter" id="newsletter">
-                        <span>Sign up for email updates and project notifications</span>
+                        <span>Sign up for email updates</span>
                     </label>
                 </div>
                 
                 <button type="submit" id="submit-btn">
-                    <span class="btn-text">Send Message</span>
+                    <span class="btn-text">Send</span>
                     <span class="btn-loader" style="display: none;">Sending...</span>
                 </button>
             </form>
@@ -91,21 +82,11 @@
             const submitBtn = document.getElementById('submit-btn');
             const btnText = submitBtn.querySelector('.btn-text');
             const btnLoader = submitBtn.querySelector('.btn-loader');
-            const charCount = document.getElementById('char-count');
-            const messageField = document.getElementById('message');
-            
-            // Character counter for message field
-            messageField.addEventListener('input', function() {
-                const length = this.value.length;
-                charCount.textContent = length;
-                charCount.parentElement.style.color = length > 1000 ? '#ff4444' : '#babed4';
-            });
             
             // Real-time validation
             const fields = {
                 name: document.getElementById('name'),
                 email: document.getElementById('email'),
-                subject: document.getElementById('subject'),
                 message: document.getElementById('message')
             };
             
@@ -137,11 +118,6 @@
                     isValid = false;
                     errorMsg = 'This field is required.';
                 }
-                // Name validation
-                else if (field.id === 'name' && value.length < 2) {
-                    isValid = false;
-                    errorMsg = 'Name must be at least 2 characters long.';
-                }
                 // Email validation
                 else if (field.type === 'email' && value) {
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -150,18 +126,10 @@
                         errorMsg = 'Please enter a valid email address.';
                     }
                 }
-                // Message validation
-                else if (field.id === 'message' && value.length < 10) {
+                // Message validation - ensure it's not empty if required
+                else if (field.id === 'message' && field.hasAttribute('required') && value.length === 0) {
                     isValid = false;
-                    errorMsg = 'Message must be at least 10 characters long.';
-                }
-                // Max length validation
-                else if (field.hasAttribute('maxlength')) {
-                    const maxLength = parseInt(field.getAttribute('maxlength'));
-                    if (value.length > maxLength) {
-                        isValid = false;
-                        errorMsg = `Maximum ${maxLength} characters allowed.`;
-                    }
+                    errorMsg = 'This field is required.';
                 }
                 
                 if (!isValid) {
@@ -232,7 +200,6 @@
                 const formData = {
                     name: fields.name.value.trim(),
                     email: fields.email.value.trim(),
-                    subject: fields.subject.value.trim() || 'No Subject',
                     message: fields.message.value.trim(),
                     newsletter: document.getElementById('newsletter').checked
                 };
@@ -256,7 +223,6 @@
                     if (response.ok) {
                         showMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon.', 'success');
                         form.reset();
-                        charCount.textContent = '0';
                     } else {
                         throw new Error('Form submission failed');
                     }
@@ -274,7 +240,6 @@
                     
                     // Reset form
                     form.reset();
-                    charCount.textContent = '0';
                     Object.values(fields).forEach(field => {
                         field.classList.remove('error');
                         document.getElementById(field.id + '-error').textContent = '';
