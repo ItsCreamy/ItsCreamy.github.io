@@ -435,9 +435,9 @@ main {
     background: #161616;
     border-radius: 18px;
     box-shadow: 0 4px 36px 0 rgba(0,0,0,0.21);
-    max-width: 490px;
+    max-width: 600px;
     width: 100%;
-    padding: 44px 38px 38px 38px;
+    padding: 44px 42px 42px 42px;
     margin: 48px auto 28px auto;
     display: flex;
     flex-direction: column;
@@ -456,41 +456,162 @@ main {
 .contact-card p {
     color: #babed4;
     font-size: 1.1rem;
-    margin: 0 0 22px 0;
+    margin: 0 0 32px 0;
+    line-height: 1.6;
+}
+
+/* Form Message Styles */
+.form-message {
+    display: none;
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.5;
+    animation: slideDown 0.3s ease-out;
+}
+
+.form-message.success {
+    background: rgba(76, 175, 80, 0.15);
+    border: 1.5px solid rgba(76, 175, 80, 0.4);
+    color: #81c784;
+}
+
+.form-message.error {
+    background: rgba(244, 67, 54, 0.15);
+    border: 1.5px solid rgba(244, 67, 54, 0.4);
+    color: #ef5350;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form Group Styles */
+.contact-card form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 24px;
+    width: 100%;
 }
 
 .contact-card form label {
+    display: block;
     color: #bac2d4;
-    margin: 10px 0 4px 0;
-    font-size: 1rem;
+    margin: 0 0 8px 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+.required {
+    color: #ef5350;
+    margin-left: 3px;
 }
 
 /* Attribute selectors , Transitions */
 .contact-card input[type="text"],
 .contact-card input[type="email"],
 .contact-card textarea {
-    width: 160%;
+    width: 100%;
+    box-sizing: border-box;
     background: #17181b;
-    border: 1.4px solid #333843;
+    border: 1.5px solid #333843;
     color: #f8fafd;
     border-radius: 8px;
-    padding: 12px 13px;
+    padding: 14px 16px;
     font-size: 1rem;
-    margin-bottom: 40px;
+    font-family: 'Roboto', Arial, sans-serif;
     outline: none;
-    transition: border 0.18s;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.contact-card textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+}
+
+/* Error state */
+.contact-card input[type="text"].error,
+.contact-card input[type="email"].error,
+.contact-card textarea.error {
+    border-color: #ef5350;
+    background: rgba(244, 67, 54, 0.05);
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1);
 }
 
 /* User action pseudo class */
-.contact-card input[type="text"]:focus,
-.contact-card input[type="email"]:focus,
-.contact-card textarea:focus {
-    border: 1.4px solid #2571f3;
+.contact-card input[type="text"]:focus:not(.error),
+.contact-card input[type="email"]:focus:not(.error),
+.contact-card textarea:focus:not(.error) {
+    border-color: #2571f3;
+    box-shadow: 0 0 0 3px rgba(37, 113, 243, 0.15);
+    background: #191a1d;
 }
 
-.contact-card input[type="checkbox"] {
+.contact-card input[type="text"]:hover:not(:focus):not(.error),
+.contact-card input[type="email"]:hover:not(:focus):not(.error),
+.contact-card textarea:hover:not(:focus):not(.error) {
+    border-color: #404550;
+}
+
+/* Error Message */
+.error-message {
+    display: block;
+    color: #ef5350;
+    font-size: 0.85rem;
+    margin-top: 6px;
+    min-height: 20px;
+    line-height: 1.4;
+}
+
+/* Character Counter */
+.char-counter {
+    text-align: right;
+    font-size: 0.8rem;
+    color: #babed4;
+    margin-top: 6px;
+    opacity: 0.8;
+}
+
+/* Checkbox Group */
+.checkbox-group {
+    margin-bottom: 28px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #bac2d4;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-right: 10px;
+    margin-top: 2px;
     accent-color: #2571f3;
-    margin-right: 6px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.checkbox-label:hover {
+    color: #d0d4e4;
 }
 
 /* Transitions */
@@ -498,31 +619,50 @@ main {
     background: #fff;
     color: #141515;
     border: none;
-    border-radius: 5px;
-    padding: 12px 32px;
+    border-radius: 8px;
+    padding: 14px 36px;
     font-weight: 700;
-    font-size: 1.09rem;
+    font-size: 1.05rem;
     margin-top: 8px;
     cursor: pointer;
-    transition: background 0.18s, color 0.16s, transform 0.10s;
-    box-shadow: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Transforms */
-.contact-card button[type="submit"]:hover {
+.contact-card button[type="submit"]:hover:not(:disabled) {
     background: #2571f3;
-    color: #111;
-    transform: scale(1.045);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 113, 243, 0.3);
 }
 
-/* Validity pseudo class */
-input:valid {
-    box-shadow: 0 0 5px #4caf50;
+.contact-card button[type="submit"]:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(37, 113, 243, 0.2);
 }
 
-/* Specificity */
+.contact-card button[type="submit"]:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-loader {
+    display: inline-block;
+}
+
+/* Validity pseudo class - Keep subtle */
+.contact-card input[type="text"]:valid:not(.error):not(:focus),
+.contact-card input[type="email"]:valid:not(.error):not(:focus) {
+    border-color: #333843;
+}
+
+/* Remove the green background on valid inputs */
 input[required]:valid {
-    background: #ecffe8;
+    background: #17181b;
 }
 
 /* ===== 9. SOCIAL LINKS ===== */
@@ -709,19 +849,45 @@ input[required]:valid {
     }
 
     .contact-card {
-        max-width: 80%;
-        padding: 28px 7vw 19px 7vw;
+        max-width: 90%;
+        padding: 32px 24px 32px 24px;
         border: 5px solid #2a2a2a;
+        margin: 32px auto 20px auto;
     }
 
     .contact-card h2 {
         font-size: 2rem;
     }
 
+    .contact-card p {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
     .contact-card input[type="text"],
     .contact-card input[type="email"],
     .contact-card textarea {
-        width: 80%;
+        width: 100%;
+        padding: 12px 14px;
+        font-size: 0.95rem;
+    }
+
+    .contact-card textarea {
+        min-height: 120px;
+    }
+
+    .contact-card button[type="submit"] {
+        padding: 14px 28px;
+        font-size: 1rem;
+    }
+
+    .form-message {
+        padding: 12px 14px;
+        font-size: 0.9rem;
     }
 
     .social-bar {
